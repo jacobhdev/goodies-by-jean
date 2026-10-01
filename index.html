@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goodies By Jean | Cookies, Breads, Muffins & Homemade Treats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #6f2b86;
+      --purple-dark: #42124f;
+      --pink: #ff8fc7;
+      --blue: #00a7df;
+      --yellow: #ffd45f;
+      --cream: #fff8ef;
+      --white: #ffffff;
+      --text: #35253a;
+      --muted: #6e5b73;
+      --shadow: 0 20px 50px rgba(66, 18, 79, 0.18);
+      --radius: 28px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Poppins", sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+    img { width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 32px, var(--max)); margin: 0 auto; }
+    .top-banner { background: var(--purple-dark); color: white; text-align: center; padding: 9px 16px; font-size: .92rem; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(255,248,239,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(111,43,134,.13); }
+    .nav { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--purple-dark); font-weight: 800; }
+    .brand-mark { width: 64px; height: 64px; border-radius: 50%; background: white; display: grid; place-items: center; box-shadow: 0 10px 24px rgba(111,43,134,.25); overflow: hidden; flex: 0 0 auto; }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
+    .brand span:first-child { display: block; font-family: "Playfair Display", serif; font-size: 1.25rem; line-height: 1.1; }
+    .brand span:last-child { display: block; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--purple-dark); font-weight: 700; }
+    .menu-toggle { display: none; border: 1px solid rgba(111,43,134,.2); background: white; border-radius: 14px; padding: 9px 12px; font-size: 1.2rem; color: var(--purple-dark); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; border: 0; border-radius: 999px; padding: 13px 22px; font-family: inherit; font-weight: 800; cursor: pointer; transition: .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .btn-primary { background: var(--purple); color: white; box-shadow: 0 14px 28px rgba(111,43,134,.28); }
+    .btn-light { background: white; color: var(--purple-dark); border: 1px solid rgba(111,43,134,.18); }
+    .hero { padding: 76px 0 88px; background: radial-gradient(circle at top left, rgba(255,143,199,.36), transparent 30%), radial-gradient(circle at bottom right, rgba(0,167,223,.22), transparent 28%); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .82fr; gap: 42px; align-items: center; }
+    .eyebrow { display: inline-flex; background: white; color: var(--purple-dark); border-radius: 999px; padding: 8px 14px; font-weight: 800; margin-bottom: 20px; box-shadow: 0 8px 22px rgba(66,18,79,.1); }
+    h1, h2 { font-family: "Playfair Display", serif; color: var(--purple-dark); line-height: 1.05; }
+    h1 { font-size: clamp(3rem, 6vw, 6rem); margin-bottom: 20px; }
+    .hero p { color: var(--muted); font-size: 1.08rem; max-width: 610px; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-photo { position: relative; border-radius: 36px; overflow: hidden; box-shadow: var(--shadow); min-height: 500px; height: 500px; max-width: 460px; width: 100%; justify-self: end; background: white; }
+    .hero-photo img { height: 580px; object-fit: cover; object-position: center; }
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-card { position: absolute; left: 24px; right: 24px; bottom: 24px; background: rgba(255,255,255,.9); backdrop-filter: blur(10px); border-radius: 24px; padding: 20px; box-shadow: 0 16px 36px rgba(66,18,79,.18); }
+    section { padding: 76px 0; }
+    .section-heading { text-align: center; max-width: 760px; margin: 0 auto 42px; }
+    .section-heading h2 { font-size: clamp(2.1rem, 4vw, 3.6rem); margin-bottom: 12px; }
+    .section-heading p, .about-copy p, .product p, .step p, .order-info p, .order-info li { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 34px; align-items: center; max-width: 900px; margin: 0 auto; }
+    .about-photo { border-radius: 34px; overflow: hidden; box-shadow: var(--shadow); background: white; }
+    .about-photo img { height: 520px; object-fit: cover; object-position: center top; }
+    .about-copy { background: white; border-radius: 34px; padding: 36px; box-shadow: 0 14px 34px rgba(66,18,79,.09); border: 1px solid rgba(111,43,134,.1); }
+    .about-copy h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 14px; }
+    .highlight-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+    .highlight { background: #fbecff; border-radius: 18px; padding: 15px; font-weight: 800; color: var(--purple-dark); text-align: center; }
+    .menu-section { background: linear-gradient(180deg, #fff8ef 0%, #f8e4ff 100%); }
+    .filter-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+    .filter-btn { border: 1px solid rgba(111,43,134,.15); background: white; color: var(--purple-dark); padding: 10px 16px; border-radius: 999px; font-family: inherit; font-weight: 800; cursor: pointer; }
+    .filter-btn.active, .filter-btn:hover { background: var(--purple); color: white; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .product { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 34px rgba(66,18,79,.1); border: 1px solid rgba(111,43,134,.1); transition: .2s ease; }
+    .product:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .product img { height: 245px; object-fit: cover; }
+    .product-placeholder {
+      height: 245px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      font-weight: 800;
+      color: var(--purple-dark);
+      background: linear-gradient(135deg, #ffffff, #fbecff);
+    }
+    .product .content { padding: 22px; }
+    .product h3, .step h3 { color: var(--purple-dark); margin-bottom: 8px; }
+    .price-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; }
+    .price { color: var(--purple); font-weight: 900; }
+    .mini-btn { background: var(--yellow); color: var(--purple-dark); border-radius: 999px; padding: 8px 13px; font-weight: 900; }
+    .gallery-grid { display: grid; grid-template-columns: 1.1fr .9fr .9fr; gap: 18px; }
+    .gallery-card { position: relative; overflow: hidden; border-radius: 28px; min-height: 300px; box-shadow: 0 14px 34px rgba(66,18,79,.1); background: white; }
+    .gallery-card.large { grid-row: span 2; min-height: 620px; }
+    .gallery-card img { height: 100%; object-fit: cover; }
+    .gallery-label { position: absolute; left: 16px; right: 16px; bottom: 16px; background: rgba(255,255,255,.9); border-radius: 18px; padding: 12px 14px; color: var(--purple-dark); font-weight: 900; }
+
+    .gallery-cta {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .gallery-facebook-btn {
+      background: var(--purple);
+      color: white;
+      box-shadow: 0 14px 28px rgba(111,43,134,.28);
+    }
+
+    .gallery-facebook-btn:hover {
+      background: var(--purple-dark);
+    }
+
+    .gallery-card {
+      cursor: pointer;
+    }
+
+    .gallery-card:focus {
+      outline: 4px solid rgba(111,43,134,.25);
+      outline-offset: 4px;
+    }
+
+    .gallery-card::after {
+      content: "Click to enlarge";
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(66,18,79,.86);
+      color: white;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: .78rem;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: .2s ease;
+    }
+
+    .gallery-card:hover::after,
+    .gallery-card:focus::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+      background: rgba(20, 8, 24, .86);
+      backdrop-filter: blur(8px);
+    }
+
+    .image-modal.open {
+      display: flex;
+    }
+
+    .image-modal-content {
+      width: fit-content;
+      max-width: 96vw;
+      max-height: 94vh;
+      display: grid;
+      gap: 14px;
+    }
+
+    .image-modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: white;
+      width: 100%;
+    }
+
+    .image-modal-title {
+      font-weight: 900;
+      font-size: 1.05rem;
+    }
+
+    .modal-close {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: white;
+      color: var(--purple-dark);
+      font-size: 1.7rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .modal-close:hover {
+      transform: translateY(-1px);
+    }
+
+    .image-modal img {
+      width: auto;
+      height: auto;
+      max-width: 96vw;
+      max-height: calc(94vh - 70px);
+      object-fit: contain;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: 0 24px 70px rgba(0,0,0,.38);
+    }
+
+    .feature-band { background: var(--purple-dark); color: white; border-radius: 42px; padding: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: center; box-shadow: var(--shadow); }
+    .feature-band h2 { color: white; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 12px; }
+    .feature-band p, .feature-band li { color: rgba(255,255,255,.84); }
+    .feature-band ul { display: grid; gap: 14px; list-style: none; }
+    .feature-band li { background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 15px; }
+    .contact-section {
+      background: linear-gradient(180deg, #fff8fc 0%, #fff 100%);
+    }
+
+    .contact-card {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 34px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(111,43,134,.13);
+      border-radius: 24px;
+      box-shadow: 0 16px 38px rgba(66,18,79,.08);
+    }
+
+    .contact-card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      margin: 0 auto 24px;
+      max-width: 620px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 230px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(132,75,246,.08);
+      color: var(--purple-dark);
+      font-weight: 800;
+      text-decoration: none;
+      border: 1px solid rgba(111,43,134,.12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(66,18,79,.08);
+      background: rgba(132,75,246,.12);
+    }
+
+    .cottage-disclosure {
+      margin: 12px auto 10px;
+      max-width: 980px;
+      padding: 20px 24px;
+      border: 2px solid rgba(111,43,134,.22);
+      border-radius: 16px;
+      background: #fff8fc;
+      box-shadow: 0 10px 28px rgba(66,18,79,.07);
+      text-align: center;
+    }
+
+    .cottage-disclosure strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--purple-dark);
+      font-size: 1rem;
+    }
+
+    .cottage-disclosure p {
+      margin: 0;
+      color: var(--text);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    .reviews-section {
+      background: linear-gradient(180deg, #fff 0%, #fff8fc 100%);
+    }
+
+    .reviews-section .section-heading {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      max-width: 1060px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .review-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: #fff;
+      border: 1px solid rgba(111,43,134,.13);
+      border-radius: 24px;
+      padding: 34px 34px 28px;
+      box-shadow: 0 16px 38px rgba(66,18,79,.08);
+      overflow: hidden;
+    }
+
+    .review-card::before {
+      content: "“";
+      position: absolute;
+      top: 12px;
+      right: 24px;
+      font-family: "Playfair Display", serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(132,75,246,.10);
+      pointer-events: none;
+    }
+
+    .review-label {
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(132,75,246,.09);
+      color: var(--purple-dark);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .review-card blockquote {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .review-author {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(111,43,134,.10);
+      color: var(--purple-dark);
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .step { background: white; border-radius: var(--radius); padding: 26px; box-shadow: 0 14px 34px rgba(66,18,79,.09); border: 1px solid rgba(111,43,134,.1); }
+    .step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--purple); color: white; display: grid; place-items: center; font-weight: 900; margin-bottom: 16px; }
+    .order { background: radial-gradient(circle at top left, rgba(255,143,199,.35), transparent 28%), radial-gradient(circle at bottom right, rgba(0,167,223,.2), transparent 30%), white; }
+    .order-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 34px; align-items: start; }
+    .order-info, .order-form { background: rgba(255,255,255,.88); border: 1px solid rgba(111,43,134,.12); box-shadow: var(--shadow); border-radius: 34px; padding: 30px; }
+    .order-info h2 { font-size: 2.5rem; margin-bottom: 14px; }
+    .order-info ul { margin-top: 16px; padding-left: 20px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--purple-dark); font-weight: 800; font-size: .92rem; }
+
+    .required-asterisk {
+      color: #d93025;
+      font-weight: 900;
+      margin-left: 4px;
+    }
+
+    .required-note {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: .92rem;
+      padding: 0 0 2px;
+    }
+
+    .required-note .required-asterisk {
+      margin-left: 0;
+      margin-right: 4px;
+    }
+
+    .field-help {
+      color: var(--muted);
+      font-size: .82rem;
+      margin-top: -2px;
+    }
+
+    .field-error {
+      display: none;
+      color: #d93025;
+      font-size: .82rem;
+      font-weight: 700;
+      margin-top: -2px;
+    }
+
+    .field-error.show {
+      display: block;
+    }
+
+    .business-hours {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(111,43,134,.14);
+    }
+
+    .business-hours strong {
+      display: block;
+      color: var(--purple-dark);
+      margin-bottom: 6px;
+    }
+
+    input.invalid,
+    select.invalid,
+    textarea.invalid {
+      border-color: #d93025;
+      background: #fff5f5;
+      box-shadow: 0 0 0 4px rgba(217,48,37,.12);
+    }
+    input, select, textarea { width: 100%; border: 1px solid rgba(111,43,134,.22); border-radius: 16px; padding: 13px 14px; font: inherit; color: var(--text); background: white; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(111,43,134,.12); }
+    textarea { min-height: 130px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: .86rem; margin-top: 13px; }
+
+    .form-success {
+      display: none;
+      grid-column: 1 / -1;
+      background: #f0fff4;
+      border: 1px solid #7bcf8e;
+      color: #245b32;
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-size: .95rem;
+      line-height: 1.55;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success strong {
+      display: block;
+      color: #174522;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .form-success a {
+      color: var(--purple-dark);
+      font-weight: 800;
+      text-decoration: underline;
+    }
+    footer { background: var(--purple-dark); color: white; padding: 34px 0; }
+    .footer-grid { display: flex; justify-content: space-between; align-items: center; gap: 22px; flex-wrap: wrap; }
+    footer p { color: rgba(255,255,255,.78); }
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .socials a { border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 9px 13px; color: rgba(255,255,255,.92); }
+
+    .modal-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.94);
+      color: var(--purple-dark);
+      font-size: 2.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 16px 36px rgba(0,0,0,.26);
+      z-index: 1001;
+      transition: .2s ease;
+    }
+
+    .modal-arrow:hover {
+      transform: translateY(-50%) scale(1.06);
+      background: white;
+    }
+
+    .modal-arrow.is-hidden {
+      display: none;
+    }
+
+    .modal-arrow-left {
+      left: 24px;
+    }
+
+    .modal-arrow-right {
+      right: 24px;
+    }
+
+    @media (max-width: 740px) {
+      .modal-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 2rem;
+      }
+
+      .modal-arrow-left {
+        left: 10px;
+      }
+
+      .modal-arrow-right {
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .about-grid, .feature-band, .order-grid { grid-template-columns: 1fr; }
+      .hero-photo, .hero-photo img { min-height: auto; height: 460px; max-width: 460px; justify-self: center; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-card.large { grid-row: auto; min-height: 360px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact-links { flex-direction: column; }
+      .contact-link { width: 100%; min-width: 0; }
+      .highlight-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 740px) {
+      .menu-toggle { display: inline-flex; }
+      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 78px; background: white; border: 1px solid rgba(111,43,134,.14); border-radius: 22px; box-shadow: var(--shadow); padding: 18px; flex-direction: column; align-items: stretch; gap: 12px; }
+      .nav-links.open { display: flex; }
+      .nav-links a, .nav-links .btn { width: 100%; text-align: center; }
+      .hero { padding: 50px 0 60px; }
+      section { padding: 58px 0; }
+      .hero-photo, .hero-photo img { height: 360px; max-width: 100%; }
+      .product-grid, .gallery-grid, .form-grid { grid-template-columns: 1fr; }
+      .gallery-card, .gallery-card.large { min-height: 330px; }
+      .about-copy, .feature-band, .order-info, .order-form { padding: 24px; border-radius: 28px; }
+    }
+    @media (max-width: 420px) {
+      .container { width: min(100% - 22px, var(--max)); }
+      h1 { font-size: 2.75rem; }
+      .brand span:first-child { font-size: 1.05rem; }
+      .brand-mark { width: 52px; height: 52px; }
+      .hero-actions .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">Fresh baked breads, muffins, cookies, and dinner rolls made with love.</div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Goodies By Jean Home"><div class="brand-mark"><img src="assets/goodies-by-jean-logo.png" alt="Goodies By Jean logo"></div><div><span>Goodies By Jean</span><span>Bakery & Custom Treats</span></div></a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="#about">Meet Jean</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#process">How It Works</a><a href="#contact">Contact Us</a><a class="btn btn-primary" href="#order">Order Now</a></nav>
+    </div>
+  </header>
+  <main id="home">
+    <section class="hero"><div class="container hero-grid"><div><div class="eyebrow">🍪 Homemade goodies for every occasion</div><h1>Fresh baked treats made with care by Jean.</h1><p>Goodies By Jean creates decorated cookies, homemade breads, muffins, dinner rolls, and other baked treats for holidays, celebrations, gatherings, and everyday enjoyment.</p><div class="hero-actions"><a class="btn btn-primary" href="#order">Start an Order</a><a class="btn btn-light" href="#gallery">View Jean’s Work</a></div></div><div class="hero-photo hero-video">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Goodies By Jean baking video">
+            <source src="assets/goodies-by-jean-cover.mp4" type="video/mp4">
+          </video>
+          <div class="hero-card"><strong>Homemade treats for every occasion</strong><p>Fresh baked cookies, breads, muffins, and rolls made to order.</p></div></div></div></section>
+    <section id="about"><div class="container about-grid"><div class="about-copy"><h2>Meet Jean</h2><p>Jean has a passion for creating homemade treats that bring a little extra joy to birthdays, holidays, family gatherings, and everyday moments. Every order is prepared with care, from decorated cookies and fresh breads to muffins, dinner rolls, and other made-to-order favorites.</p><p>Goodies By Jean is all about thoughtful, personal service. Browse Jean’s work, explore the available options, and send in an order request with the details of what you have in mind.</p><div class="highlight-list"><div class="highlight">Homemade</div><div class="highlight">Made to Order</div><div class="highlight">Fresh Baked</div></div></div></div></section>
+    <section class="menu-section" id="menu"><div class="container"><div class="section-heading"><h2>Order options</h2><p>Browse Jean’s decorated cookies, homemade breads, muffins, dinner rolls, and other fresh baked treats.</p></div><div class="filter-row"><button class="filter-btn active" onclick="filterMenu('all', this)">All</button><button class="filter-btn" onclick="filterMenu('cookies', this)">Cookies</button><button class="filter-btn" onclick="filterMenu('muffins', this)">Muffins</button><button class="filter-btn" onclick="filterMenu('breads', this)">Breads & Rolls</button><button class="filter-btn" onclick="filterMenu('other', this)">Other</button></div><div class="product-grid">
+      <article class="product" data-category="cookies"><img src="assets/gbj-cookies-2.jpg" alt="Decorated sugar cookies"><div class="content"><h3>Decorated Sugar Cookies</h3><p>Custom colors, numbers, names, characters, and party themes.</p><div class="price-row"><span class="price">From $30/dozen</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      
+      <article class="product" data-category="muffins"><div class="product-placeholder">MUFFINS</div><div class="content"><h3>Muffins</h3><p>Fresh baked muffins by the dozen. Ask about available flavors when placing your order.</p><div class="price-row"><span class="price">$20/dozen</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="cookies"><div class="product-placeholder">🍪</div><div class="content"><h3>Chocolate Chip Cookies</h3><p>Classic homemade chocolate chip cookies baked fresh by the dozen.</p><div class="price-row"><span class="price">$15/dozen</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="cookies"><div class="product-placeholder">🍪</div><div class="content"><h3>Oatmeal Raisin Cookies</h3><p>Soft oatmeal raisin cookies with a comforting homemade flavor.</p><div class="price-row"><span class="price">$15/dozen</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="cookies"><div class="product-placeholder">🥜</div><div class="content"><h3>Peanut Butter Cookies</h3><p>Rich peanut butter cookies baked fresh and ready to share.</p><div class="price-row"><span class="price">$15/dozen</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="breads"><div class="product-placeholder">🍞</div><div class="content"><h3>White & Wheat Bread</h3><p>Fresh homemade white or wheat bread, baked by the loaf.</p><div class="price-row"><span class="price">$8/loaf</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="breads"><div class="product-placeholder">🍞</div><div class="content"><h3>Pumpkin Bread</h3><p>Homemade pumpkin bread with a rich, seasonal flavor.</p><div class="price-row"><span class="price">$10/loaf</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="breads"><div class="product-placeholder">🍌</div><div class="content"><h3>Banana Bread</h3><p>Classic homemade banana bread, baked fresh by the loaf.</p><div class="price-row"><span class="price">$10/loaf</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="breads"><div class="product-placeholder">🥒</div><div class="content"><h3>Zucchini Bread</h3><p>Moist homemade zucchini bread, baked fresh by the loaf.</p><div class="price-row"><span class="price">$10/loaf</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="breads"><div class="product-placeholder">🥖</div><div class="content"><h3>Dinner Rolls</h3><p>Soft dinner rolls available by the dozen for family meals, holidays, and gatherings.</p><div class="price-row"><span class="price">$12/dozen</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+      <article class="product" data-category="other"><div class="product-placeholder">✨</div><div class="content"><h3>Special Request Orders</h3><p>Have something else in mind? Send Jean the type of baked good, quantity, date, and any special details.</p><div class="price-row"><span class="price">Ask Jean</span><a class="mini-btn" href="#order">Order</a></div></div></article>
+    </div></div></section>
+    <section id="gallery"><div class="container"><div class="section-heading"><h2>Jean’s gallery</h2><p>Explore a few of Jean’s decorated cookie designs. Click any photo to view it larger and see the details up close.</p></div><div class="gallery-grid"><button type="button" class="gallery-card large" onclick="openImageModal(0)" aria-label="View full image of Birthday Cookies"><img src="assets/gbj-cookies.jpg" alt="Birthday cookies"><div class="gallery-label">Birthday Cookies</div></button><button type="button" class="gallery-card" onclick="openImageModal(1)" aria-label="View full image of Easter Cookies"><img src="assets/gbj-easter-cookies.jpg" alt="Decorated Easter cookies"><div class="gallery-label">Easter Cookies</div></button><button type="button" class="gallery-card" onclick="openImageModal(2)" aria-label="View full image of Graduation Cookies"><img src="assets/gbj-graduation-cookies.jpg" alt="Decorated graduation cookies"><div class="gallery-label">Graduation Cookies</div></button><button type="button" class="gallery-card" onclick="openImageModal(3)" aria-label="View full image of Miscellaneous Cookies"><img src="assets/gbj-miscellaneous-cookies.jpg" alt="Decorated miscellaneous cookies"><div class="gallery-label">Miscellaneous Cookies</div></button><button type="button" class="gallery-card" onclick="openImageModal(4)" aria-label="View full image of Valentine Cookies"><img src="assets/gbj-valentine-cookies.jpg" alt="Decorated Valentine cookies"><div class="gallery-label">Valentine Cookies</div></button><button type="button" class="gallery-card" onclick="openImageModal(5)" aria-label="View full image of Graduation Cookies"><img src="assets/gbj-graduation-cookies-2.jpg" alt="Graduation cookies"><div class="gallery-label">Graduation Cookies</div></button></div><div class="gallery-cta"><a class="btn gallery-facebook-btn" href="https://www.facebook.com/profile.php?id=61561139330214" target="_blank" rel="noopener noreferrer">See more photos on Facebook</a></div></div></section>
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-heading">
+          <h2>What customers are saying</h2>
+          <p>Kind words from customers who have enjoyed Jean’s homemade treats.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-label">Customer Review</div>
+            <blockquote>“She makes the yummiest, prettiest sweet treats. She also works hard to deal with dietary restrictions. She made me the BEST diabetic friendly cheesecake! It made for a healthy, guilt free birthday celebration.”</blockquote>
+            <cite class="review-author">Lisa</cite>
+          </article>
+          <article class="review-card">
+            <div class="review-label">Customer Review</div>
+            <blockquote>“There is no doubt Jean makes the best sweet treats. All the birthday cakes for my family come from Jean. From the flavor to the decorations, and lots of love, her treats are AMAZING. You will not be disappointed.”</blockquote>
+            <cite class="review-author">Anonymous</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section><div class="container feature-band"><div><h2>Fresh baked treats for every occasion.</h2><p>Goodies By Jean offers decorated cookies, homemade breads, muffins, dinner rolls, seasonal specials, and custom baked orders.</p></div><ul><li><strong>Decorated Cookies:</strong> Custom themes, colors, names, numbers, and holiday designs.</li><li><strong>Fresh Breads & Rolls:</strong> Homemade loaves and dinner rolls for everyday meals and gatherings.</li><li><strong>Seasonal Bakes:</strong> Muffins, holiday treats, and other special-request baked goods.</li></ul></div></section>
+    <section id="process"><div class="container"><div class="section-heading"><h2>How ordering works</h2><p>A simple process helps customers know exactly what to expect before submitting a request, including pickup, local delivery in Bend, Oregon, and shipping options for select desserts.</p></div><div class="process-grid"><article class="step"><div class="step-num">1</div><h3>Choose your goodies</h3><p>Select the type of treat, quantity, event date, colors, flavor, and theme.</p></article><article class="step"><div class="step-num">2</div><h3>Jean confirms details</h3><p>Jean reviews the request, confirms availability, pricing, pickup, and payment.</p></article><article class="step"><div class="step-num">3</div><h3>Pick up and enjoy</h3><p>Your order is baked fresh and prepared for pickup, local delivery in Bend, Oregon, or shipping when available for select desserts.</p></article></div></div></section>
+    <section class="order" id="order"><div class="container order-grid"><aside class="order-info"><h2>Request an order</h2><p>Ready to place an order? Fill out the form below and tell Jean what you’re looking for. Please include as much detail as possible, including the type of item, quantity, flavors, colors, theme, dietary needs, and any other preferences that will help Jean understand your request. Jean will follow up to confirm availability, pricing, and the final details.</p><ul><li>Recommended notice: 3–7 days for standard orders.</li><li>Large or custom orders may require additional notice.</li><li>Final pricing depends on size, design, quantity, pickup, local delivery in Bend, Oregon, or shipping needs for eligible desserts.</li></ul><div class="business-hours"><strong>Business Hours</strong><p>Monday through Saturday: 9:00 AM – 5:00 PM<br>Sunday: Closed</p></div></aside><form class="order-form" onsubmit="handleOrder(event)"><div class="form-grid"><p class="required-note"><span class="required-asterisk">*</span>All fields marked with an asterisk are required.</p><div class="field"><label for="name">Name <span class="required-asterisk">*</span></label><input id="name" name="name" type="text" placeholder="Your full name" required></div><div class="field"><label for="phone">Phone <span class="required-asterisk">*</span></label><input id="phone" name="phone" type="tel" placeholder="Best contact number" required></div><div class="field"><label for="email">Email <span class="required-asterisk">*</span></label><input id="email" name="email" type="email" placeholder="you@example.com" required></div><div class="field"><label for="contactMethod">Preferred Contact Method <span class="required-asterisk">*</span></label><select id="contactMethod" name="contactMethod" required><option value="">Select one</option><option value="Text">Text</option><option value="Call">Call</option><option value="Email">Email</option></select></div><div class="field"><label for="date">Needed By <span class="required-asterisk">*</span></label><input id="date" name="date" type="date" required><p class="field-error" id="dateError">Goodies By Jean is closed on Sunday. Please choose a date Monday through Saturday.</p></div><div class="field"><label for="time">Desired Time <span class="required-asterisk">*</span></label><select id="time" name="time" required><option value="">Select a time</option>
+<option value="09:00">9:00 AM</option>
+<option value="09:30">9:30 AM</option>
+<option value="10:00">10:00 AM</option>
+<option value="10:30">10:30 AM</option>
+<option value="11:00">11:00 AM</option>
+<option value="11:30">11:30 AM</option>
+<option value="12:00">12:00 PM</option>
+<option value="12:30">12:30 PM</option>
+<option value="13:00">1:00 PM</option>
+<option value="13:30">1:30 PM</option>
+<option value="14:00">2:00 PM</option>
+<option value="14:30">2:30 PM</option>
+<option value="15:00">3:00 PM</option>
+<option value="15:30">3:30 PM</option>
+<option value="16:00">4:00 PM</option>
+<option value="16:30">4:30 PM</option>
+<option value="17:00">5:00 PM</option></select><p class="field-help">Available times: 9:00 AM to 5:00 PM, Monday through Saturday.</p><p class="field-error" id="timeError">Please choose a time between 9:00 AM and 5:00 PM.</p></div><div class="field"><label for="category">Order Type <span class="required-asterisk">*</span></label><select id="category" name="category" required><option value="">Select one</option><option>Decorated Sugar Cookies</option><option>Chocolate Chip Cookies</option><option>Oatmeal Raisin Cookies</option><option>Peanut Butter Cookies</option><option>Muffins</option><option>White Bread</option><option>Wheat Bread</option><option>Pumpkin Bread</option><option>Banana Bread</option><option>Zucchini Bread</option><option>Dinner Rolls</option><option>Other Custom Order</option></select></div><div class="field"><label for="quantity">Quantity / Serving Size <span class="required-asterisk">*</span></label><input id="quantity" name="quantity" type="text" placeholder="Example: 2 dozen or serves 25" required></div><div class="field full"><label for="details">Order Details <span class="required-asterisk">*</span></label><textarea id="details" name="details" placeholder="Tell Jean the flavor, colors, theme, message, allergies, pickup/delivery preference, and any inspiration details." required></textarea></div><div class="form-success" id="formSuccess" role="status" aria-live="polite"><strong>Thank you! Your order request has been submitted.</strong>Jean will contact you to confirm the details. If you have any inspiration photos you would like to send, please email them to <a href="mailto:goodiesbyjean@yahoo.com">goodiesbyjean@yahoo.com</a>.</div><div class="field full"><button class="btn btn-primary" type="submit">Submit Order Request</button><p class="form-note">Please complete every required field before submitting. Empty required fields will be highlighted in red.</p></div></div></form></div></section>
+        <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <h2>Contact Us</h2>
+          <p>Have a question before placing an order? Reach out to Jean by email or phone.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:goodiesbyjean@yahoo.com">goodiesbyjean@yahoo.com</a>
+            <a class="contact-link" href="tel:+15417883822">541-788-3822</a>
+          </div>
+        </div>
+      </div>
+    </section>
+<section aria-label="Oregon cottage food disclosure">
+      <div class="container">
+        <div class="cottage-disclosure">
+          <strong>Oregon Cottage Food Disclosure</strong>
+          <p>These products are homemade, are not prepared in an inspected food establishment, and must be stored and displayed separately if merchandised by a retailer.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="image-modal" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="imageModalTitle" onclick="closeImageModal(event)">
+    <div class="image-modal-content">
+      <div class="image-modal-top">
+        <div class="image-modal-title" id="imageModalTitle">Gallery Image</div>
+        <button type="button" class="modal-close" onclick="closeImageModal(event)" aria-label="Close image viewer">×</button>
+      </div>
+      <button type="button" class="modal-arrow modal-arrow-left" id="prevGalleryButton" onclick="changeGalleryImage(-1, event)" aria-label="View previous gallery image">‹</button>
+      <img id="modalImage" src="" alt="">
+      <button type="button" class="modal-arrow modal-arrow-right" id="nextGalleryButton" onclick="changeGalleryImage(1, event)" aria-label="View next gallery image">›</button>
+    </div>
+  </div>
+
+  <footer><div class="container footer-grid"><div><strong>Goodies By Jean</strong><p>Fresh baked treats, custom orders, and desserts made with love.</p></div><div class="socials"><a href="https://www.facebook.com/profile.php?id=61561139330214" target="_blank" rel="noopener noreferrer">Facebook</a><a href="#order">Order</a></div></div></footer>
+  <script>
+    function toggleMenu() { document.getElementById("navLinks").classList.toggle("open"); }
+    document.querySelectorAll(".nav-links a").forEach(link => { link.addEventListener("click", () => document.getElementById("navLinks").classList.remove("open")); });
+    function filterMenu(category, button) {
+      document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      document.querySelectorAll(".product").forEach(item => { item.style.display = category === "all" || item.dataset.category === category ? "block" : "none"; });
+    }
+
+    const galleryImages = [
+      {
+        src: "assets/gbj-cookies.jpg",
+        title: "Birthday Cookies"
+      },
+      {
+        src: "assets/gbj-easter-cookies.jpg",
+        title: "Easter Cookies"
+      },
+      {
+        src: "assets/gbj-graduation-cookies.jpg",
+        title: "Graduation Cookies"
+      },
+      {
+        src: "assets/gbj-miscellaneous-cookies.jpg",
+        title: "Miscellaneous Cookies"
+      },
+      {
+        src: "assets/gbj-valentine-cookies.jpg",
+        title: "Valentine Cookies"
+      },
+      {
+        src: "assets/gbj-graduation-cookies-2.jpg",
+        title: "Graduation Cookies"
+      }
+    ];
+
+    let currentGalleryIndex = 0;
+
+    function openImageModal(index) {
+      currentGalleryIndex = index;
+      updateModalImage();
+
+      const modal = document.getElementById("imageModal");
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function updateModalImage() {
+      const currentImage = galleryImages[currentGalleryIndex];
+      const image = document.getElementById("modalImage");
+      const heading = document.getElementById("imageModalTitle");
+      const previousButton = document.getElementById("prevGalleryButton");
+      const nextButton = document.getElementById("nextGalleryButton");
+
+      image.src = currentImage.src;
+      image.alt = currentImage.title;
+      heading.textContent = currentImage.title;
+
+      previousButton.classList.toggle("is-hidden", currentGalleryIndex === 0);
+      nextButton.classList.toggle("is-hidden", currentGalleryIndex === galleryImages.length - 1);
+    }
+
+    function changeGalleryImage(direction, event) {
+      if (event) {
+        event.stopPropagation();
+      }
+
+      const nextIndex = currentGalleryIndex + direction;
+
+      if (nextIndex < 0 || nextIndex >= galleryImages.length) {
+        return;
+      }
+
+      currentGalleryIndex = nextIndex;
+      updateModalImage();
+    }
+
+    function closeImageModal(event) {
+      const modal = document.getElementById("imageModal");
+
+      if (
+        event.type === "click" &&
+        event.target !== modal &&
+        !event.target.classList.contains("modal-close")
+      ) {
+        return;
+      }
+
+      modal.classList.remove("open");
+      document.getElementById("modalImage").src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", (event) => {
+      const modal = document.getElementById("imageModal");
+      if (!modal.classList.contains("open")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        modal.classList.remove("open");
+        document.getElementById("modalImage").src = "";
+        document.body.style.overflow = "";
+      }
+
+      if (event.key === "ArrowLeft") {
+        changeGalleryImage(-1);
+      }
+
+      if (event.key === "ArrowRight") {
+        changeGalleryImage(1);
+      }
+    });
+
+    document.addEventListener("input", (event) => {
+      if (event.target.matches("input, select, textarea") && event.target.value.trim()) {
+        event.target.classList.remove("invalid");
+
+        const successMessage = document.getElementById("formSuccess");
+        if (successMessage) {
+          successMessage.classList.remove("show");
+        }
+      }
+    });
+
+    document.addEventListener("change", (event) => {
+      if (event.target.matches("input, select, textarea") && event.target.value.trim()) {
+        event.target.classList.remove("invalid");
+      }
+
+      if (event.target.id === "date" || event.target.id === "time") {
+        validateDateAndTime(false);
+      }
+    });
+
+    function parseDesiredTime(value) {
+      if (!value) {
+        return null;
+      }
+
+      const valueText = value.trim();
+
+      // Supports the dropdown 24-hour values such as 14:30.
+      const twentyFourHourMatch = valueText.match(/^(\d{2}):(\d{2})$/);
+      if (twentyFourHourMatch) {
+        const hour = Number(twentyFourHourMatch[1]);
+        const minute = Number(twentyFourHourMatch[2]);
+
+        if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+          return null;
+        }
+
+        return {
+          hour,
+          minute,
+          hourText: String(hour).padStart(2, "0"),
+          minuteText: String(minute).padStart(2, "0")
+        };
+      }
+
+      // Fallback support for typed values such as 2:30 PM.
+      const cleanValue = valueText.toUpperCase().replace(/\s+/g, " ");
+      const timeMatch = cleanValue.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/);
+
+      if (!timeMatch) {
+        return null;
+      }
+
+      let hour = Number(timeMatch[1]);
+      const minute = timeMatch[2] ? Number(timeMatch[2]) : 0;
+      const period = timeMatch[3];
+
+      if (hour < 1 || hour > 12 || minute < 0 || minute > 59) {
+        return null;
+      }
+
+      if (period === "PM" && hour !== 12) {
+        hour += 12;
+      }
+
+      if (period === "AM" && hour === 12) {
+        hour = 0;
+      }
+
+      return {
+        hour,
+        minute,
+        hourText: String(hour).padStart(2, "0"),
+        minuteText: String(minute).padStart(2, "0")
+      };
+    }
+
+    function isWithinBusinessHours(parsedTime) {
+      if (!parsedTime) {
+        return false;
+      }
+
+      const totalMinutes = (parsedTime.hour * 60) + parsedTime.minute;
+      const openMinutes = 9 * 60;
+      const closeMinutes = 17 * 60;
+      return totalMinutes >= openMinutes && totalMinutes <= closeMinutes;
+    }
+
+    function isClosedSunday(selectedDate) {
+      if (!selectedDate) {
+        return false;
+      }
+
+      const [year, month, day] = selectedDate.split("-").map(Number);
+      const date = new Date(year, month - 1, day);
+      return date.getDay() === 0;
+    }
+
+    function validateDateAndTime(showFocus = false) {
+      const dateField = document.getElementById("date");
+      const timeField = document.getElementById("time");
+      const dateError = document.getElementById("dateError");
+      const timeError = document.getElementById("timeError");
+      const selectedDate = dateField.value;
+      const selectedTime = timeField.value;
+      const parsedTime = parseDesiredTime(selectedTime);
+
+      const sundaySelected = isClosedSunday(selectedDate);
+      const invalidTimeSelected = selectedTime && (!parsedTime || !isWithinBusinessHours(parsedTime));
+
+      dateField.classList.toggle("invalid", sundaySelected);
+      dateError.classList.toggle("show", sundaySelected);
+
+      timeField.classList.toggle("invalid", invalidTimeSelected);
+      timeError.classList.toggle("show", invalidTimeSelected);
+
+      if (showFocus && sundaySelected) {
+        dateField.focus();
+        dateField.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else if (showFocus && invalidTimeSelected) {
+        timeField.focus();
+        timeField.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      return !sundaySelected && !invalidTimeSelected;
+    }
+
+    function handleOrder(event) {
+      event.preventDefault();
+
+      const visibleForm = event.target;
+      const requiredFields = visibleForm.querySelectorAll("input[required], select[required], textarea[required]");
+      let firstInvalidField = null;
+
+      requiredFields.forEach((field) => {
+        const isEmpty = !field.value.trim();
+        field.classList.toggle("invalid", isEmpty);
+
+        if (isEmpty && !firstInvalidField) {
+          firstInvalidField = field;
+        }
+      });
+
+      if (firstInvalidField) {
+        firstInvalidField.focus();
+        firstInvalidField.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      const dateField = document.getElementById("date");
+      const timeField = document.getElementById("time");
+      const selectedDate = dateField.value;
+      const selectedTime = timeField.value;
+      const parsedTime = parseDesiredTime(selectedTime);
+
+      if (!validateDateAndTime(true)) {
+        return;
+      }
+
+      const submitButton = visibleForm.querySelector('button[type="submit"]');
+      const name = document.getElementById("name").value.trim();
+
+      const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfHW2lpoiBlaGAnefPchozmWr9gfWA0oi3VZYW1ZraLXlT60w/formResponse";
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+
+      const iframeName = "hiddenGoogleFormFrame";
+      let iframe = document.querySelector(`iframe[name="${iframeName}"]`);
+
+      if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.name = iframeName;
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+      }
+
+      const googleForm = document.createElement("form");
+      googleForm.action = googleFormUrl;
+      googleForm.method = "POST";
+      googleForm.target = iframeName;
+      googleForm.style.display = "none";
+
+      function addField(name, value) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value || "";
+        googleForm.appendChild(input);
+      }
+
+      addField("entry.944554571", document.getElementById("name").value);
+      addField("entry.977493629", document.getElementById("phone").value);
+      addField("entry.2094460446", document.getElementById("email").value);
+      addField("entry.1695602674", document.getElementById("contactMethod").value);
+
+      if (selectedDate) {
+        const [year, month, day] = selectedDate.split("-");
+        addField("entry.31734405_year", year);
+        addField("entry.31734405_month", month);
+        addField("entry.31734405_day", day);
+        addField("entry.31734405", selectedDate);
+      }
+
+      if (parsedTime) {
+        addField("entry.786955601_hour", parsedTime.hourText);
+        addField("entry.786955601_minute", parsedTime.minuteText);
+        addField("entry.786955601", `${parsedTime.hourText}:${parsedTime.minuteText}`);
+      }
+
+      addField("entry.2127101906", document.getElementById("category").value);
+      addField("entry.1667347192", document.getElementById("quantity").value);
+      addField("entry.675490983", document.getElementById("details").value);
+
+      document.body.appendChild(googleForm);
+      googleForm.submit();
+
+      setTimeout(() => {
+        googleForm.remove();
+        visibleForm.reset();
+
+        if (typeof requiredFields !== "undefined") {
+          requiredFields.forEach((field) => field.classList.remove("invalid"));
+        }
+
+        const successMessage = document.getElementById("formSuccess");
+        successMessage.classList.add("show");
+        successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Order Request";
+      }, 900);
+    }
+  </script>
+</body>
+</html>
